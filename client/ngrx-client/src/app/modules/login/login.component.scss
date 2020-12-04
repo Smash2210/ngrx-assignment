@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    .login-block{
+        width: 40%;
+        height: 50%;
+        position: relative;
+        .logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // margin-bottom: 10px;
+            flex-direction: column;
+            img{
+                height: 70px;
+                width: 70px;
+                border-radius: 50%;
+                position: relative;
+            }
+            h3{
+                margin-bottom: 10px;
+                font-size: 25px;
+                font-family: 'Nerko One', cursive;
+            }
+        }
+        .login-card{
+            .login-input{
+                width: 80%;
+                margin-left: 10%;
+            }
+            .login-btn{
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}
