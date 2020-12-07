@@ -7,7 +7,7 @@ module.exports = {
         secret: process.env.SECRET,
         unprotectedRoutes: [
             '/',
-            '/login'
+            '/api/login'
         ]
     },
     mockLoginCred: [

@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 const { validateUser } = require('./helpers/validate-user');
 
 app.use(bodyParser.json());
-app.use('/', jwt.verify(), validateUser(), routes());
+app.use('/api', jwt.verify(), validateUser(), routes());
 
 app.use(errorHandler);
 

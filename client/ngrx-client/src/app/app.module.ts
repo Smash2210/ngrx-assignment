@@ -5,6 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from "@ngrx/store";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthEffects } from "./effects/login.effects";
+import { ListDataEffects } from "./effects/list-data.effects";
+import { loginReducer } from "./reducers/login.reducers";
+import { TokenInterceptor } from './services/request.interceptor';
 
 @NgModule({
   declarations: [
@@ -14,9 +21,21 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([])
+    FormsModule,
+    HttpClientModule,
+    StoreModule.forRoot([loginReducer]),
+    EffectsModule.forRoot([
+      AuthEffects,
+      ListDataEffects
+    ])
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
